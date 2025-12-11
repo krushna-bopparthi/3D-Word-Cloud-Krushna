@@ -37,18 +37,18 @@ This project showcases:
 ## 📂 Project Structure
 - 3D-Word-Cloud-Krushna/
 - ├── backend/
-- │   ├── app.py
-- │   ├── utils.py
-- │   ├── requirements.txt
-- │   └── ...
+- │    ├── app.py
+- │    ├── utils.py
+- │    ├── requirements.txt
+- │    └── ...
 - │
 - ├── frontend/
-- │   ├── src/
-- │   │   ├── App.tsx
-- │   │   ├── WordCloud3D.tsx
-- │   │   └── ...
-- │   ├── package.json
-- │   └── ...
+- │    ├── src/
+- │    │   ├── App.tsx
+- │    │   ├── WordCloud3D.tsx
+- │    │   └── ...
+- │    ├── package.json
+- │    └── ...
 - │
 - ├── setup.ps1          # One-command setup and run script
 - └── README.md
@@ -63,18 +63,30 @@ Make sure you have installed:
 
 - **Python 3.1+**
 - **Node.js 18+**
-- **PowerShell (Windows)**  
+- **PowerShell (Windows)**
+- **bash(Linux)**
 
 > If using Mac/Linux, ask for a `setup.sh` version.
 
 ---
 
 # ▶️ Run the Project (One Command)
-
-- From the **project root**, run (in Powershell):
+# For Windows
+- From the **project root**, run (in Powershell - Run as Admin):
 ```
 ./setup.ps1
 ```
+# For MacOS/Linux
+- From the **project root**, run (in bash):
+```
+./setup.sh
+```
+- If permission error occurs
+```
+chmod +x setup.sh
+./setup.sh
+```
+
 # This script will automatically:
 
 Create a Python virtual environment
@@ -87,6 +99,30 @@ Create a Python virtual environment
 
 - Backend (FastAPI): http://127.0.0.1:8000
 - Frontend (React): The terminal will show the exact Vite URL (commonly http://localhost:5173)
+
+# How it works
+**1. User enters a news article URL.**
+- The frontend sends the URL to the FastAPI backend.
+
+**2. Backend fetches & processes the article**
+- Downloads the webpage
+- Removes HTML tags, punctuation, and noise
+- Extracts the main text
+- Applies TF-IDF keyword extraction
+- Returns a ranked list of important words with weights.
+
+**3. 3D Word Cloud renders the results**
+- Converts each word into a 3D object
+- Sizes the word based on weight
+- Assigns color dynamically
+- Gently animates each word (floating motion)
+- Ensures spacing to reduce overlapping
+
+**4. User sees an interactive 3D visualization**
+- Smooth motion
+- Hover scale animation
+- Galaxy-style star background
+- Fully navigable 3D space
 
 # API Usage
 #POST/Analyze
