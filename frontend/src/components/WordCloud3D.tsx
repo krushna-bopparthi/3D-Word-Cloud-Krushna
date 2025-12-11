@@ -26,18 +26,16 @@ function Word3D({
   const ref = useRef<THREE.Mesh>(null!);
   const [hovered, setHovered] = useState(false);
 
-  // Soft breathing animation
+  // VERY LIGHT floating movement (safe, no distortion)
   useFrame((state) => {
     if (!ref.current) return;
 
     const t = state.clock.elapsedTime;
 
-    // Tiny floating movement
-    ref.current.position.y = position[1] + Math.sin(t * 0.6 + index) * 0.15;
-    ref.current.position.x = position[0] + Math.cos(t * 0.4 + index) * 0.1;
+    // VERY tiny micro-movement only to look alive
+    ref.current.position.y = position[1] + Math.sin(t * 0.5 + index) * 0.01;
 
-    // Soft hover scale animation
-    const scale = hovered ? 1.25 : 1;
+    const scale = hovered ? 1.2 : 1;
     ref.current.scale.lerp(new THREE.Vector3(scale, scale, scale), 0.1);
   });
 
