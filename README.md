@@ -98,6 +98,7 @@ Create a Python virtual environment
 🔗 App URLs
 
 - Backend (FastAPI): http://127.0.0.1:8000
+- Swagger Docs → http://127.0.0.1:8000/docs
 - Frontend (React): The terminal will show the exact Vite URL (commonly http://localhost:5173)
 - By default, Vite runs at http://localhost:5173/. 
 If that port is busy, Vite will automatically choose the next available port (e.g., 5174).
