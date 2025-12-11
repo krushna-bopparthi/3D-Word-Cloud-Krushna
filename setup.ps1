@@ -49,4 +49,5 @@ Set-Location "../"
 # -------------------------------------------------
 Write-Host "`n=== Setup Complete! Project is running. ===" -ForegroundColor Green
 Write-Host "Backend → http://127.0.0.1:8000" -ForegroundColor Cyan
+Write-Host "Swagger Docs     → http://127.0.0.1:8000/docs" -ForegroundColor Cyan
 Write-Host "Frontend → http://localhost:5173/" -ForegroundColor Cyan

@@ -53,6 +53,7 @@ cd ..
 echo ""
 echo "=== Setup Complete! Project is running. ==="
 echo "Backend → http://127.0.0.1:8000"
+echo "Swagger Docs → http://127.0.0.1:8000/docs"
 echo "Frontend → http://localhost:5173/"
 echo ""
 echo "Logs: backend.log / frontend.log"
