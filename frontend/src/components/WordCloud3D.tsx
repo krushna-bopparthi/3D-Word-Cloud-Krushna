@@ -33,7 +33,7 @@ function Word3D({
     const t = state.clock.elapsedTime;
 
     // VERY tiny micro-movement only to look alive
-    ref.current.position.y = position[1] + Math.sin(t * 0.5 + index) * 0.01;
+    ref.current.position.y = position[1] + Math.sin(t * 0.5 + index) * 0.02;
 
     const scale = hovered ? 1.2 : 1;
     ref.current.scale.lerp(new THREE.Vector3(scale, scale, scale), 0.1);
@@ -73,36 +73,20 @@ function SpreadCloud({ words }: { words: WordDatum[] }) {
   const positions = useMemo(() => {
     const result: [number, number, number][] = [];
 
-    const MIN_DISTANCE = 2.2; // Minimum distance between words
-    const MAX_TRIES = 30;
+    const radiusStep = 3; // distance between circles
+    const wordsPerCircle = 10; // number of words before increasing radius
 
-    words.forEach(() => {
-      let pos: [number, number, number];
-      let tries = 0;
+    words.forEach((_, i) => {
+      const circleIndex = Math.floor(i / wordsPerCircle);
+      const angle = (i % wordsPerCircle) * ((Math.PI * 2) / wordsPerCircle);
 
-      do {
-        // Larger spread → words fill the screen better
-        pos = [
-          THREE.MathUtils.randFloatSpread(20), // x range -20 to +20
-          THREE.MathUtils.randFloatSpread(10), // y range -10 to +10
-          THREE.MathUtils.randFloatSpread(3), // z range -3 to +3
-        ];
+      const radius = 3 + circleIndex * radiusStep;
 
-        tries++;
-        // Retry if too close to any existing word
-      } while (
-        result.some(
-          (p) =>
-            Math.sqrt(
-              Math.pow(p[0] - pos[0], 2) +
-                Math.pow(p[1] - pos[1], 2) +
-                Math.pow(p[2] - pos[2], 2)
-            ) < MIN_DISTANCE
-        ) &&
-        tries < MAX_TRIES
-      );
+      const x = Math.cos(angle) * radius;
+      const y = Math.sin(angle) * radius * 0.5; // compressed vertically
+      const z = 0;
 
-      result.push(pos);
+      result.push([x, y, z]);
     });
 
     return result;

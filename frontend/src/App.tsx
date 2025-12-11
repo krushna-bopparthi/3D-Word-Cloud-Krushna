@@ -4,9 +4,9 @@ import { WordCloud3D } from "./components/WordCloud3D";
 import type { WordDatum } from "./components/WordCloud3D";
 
 const SAMPLE_URLS = [
-  "https://www.bbc.com/news/world-us-canada-68055041",
-  "https://www.nytimes.com/",
-  "https://edition.cnn.com/",
+  "https://www.prnewswire.com/news-releases/sparrow-secures-record-breaking-5-7-million-pure-angel-round-301700662.html",
+  "https://thegolfwire.com/sparrow-new-a-i-golf-app/",
+  "https://www.golfdaily.com/sparrow-helps-perfect-golf-swing-via-ai-technology/",
 ];
 
 type AnalyzeResponse = {
@@ -213,7 +213,7 @@ function App() {
             }}
           >
             Enter a news article URL above and click{" "}
-            <strong style={{ marginLeft: "0.25rem" }}>Analyze</strong> to see
+            <strong style={{ marginLeft: "0.25rem" }}>Analyze</strong> &nbsp;to see
             the 3D word cloud.
           </div>
         )}
