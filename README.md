@@ -99,6 +99,10 @@ Create a Python virtual environment
 
 - Backend (FastAPI): http://127.0.0.1:8000
 - Frontend (React): The terminal will show the exact Vite URL (commonly http://localhost:5173)
+- By default, Vite runs at http://localhost:5173/. 
+If that port is busy, Vite will automatically choose the next available port (e.g., 5174).
+Check your terminal output for the exact frontend URL.
+
 
 # How it works
 **1. User enters a news article URL.**
