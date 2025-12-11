@@ -50,6 +50,7 @@ function App() {
     <div
       style={{
         height: "100vh",
+        width: "100vw",
         display: "flex",
         flexDirection: "column",
         background: "radial-gradient(circle at top, #1f2933, #020617)",
@@ -68,7 +69,9 @@ function App() {
           zIndex: 10,
         }}
       >
-        <h1 style={{ margin: 0, fontSize: "1.5rem" }}>3D News Topic Word Cloud</h1>
+        <h1 style={{ margin: 0, fontSize: "1.5rem" }}>
+          3D News Topic Word Cloud
+        </h1>
         <p style={{ margin: 0, fontSize: "0.9rem", opacity: 0.8 }}>
           Enter a news article URL or pick one of the samples, then click{" "}
           <strong>Analyze</strong> to see the main topics as a 3D word cloud.
@@ -90,14 +93,16 @@ function App() {
             placeholder="Enter article URL"
             required
             style={{
-              flex: "1 1 260px",
-              padding: "0.5rem 0.75rem",
-              borderRadius: "0.5rem",
-              border: "1px solid rgba(148,163,184,0.7)",
-              background: "rgba(15,23,42,0.8)",
+              flex: "0 1 650px", // fixed reasonable width
+              padding: "0.35rem 0.6rem", // smaller padding
+              fontSize: "0.85rem", // slightly smaller text
+              borderRadius: "0.4rem",
+              border: "1px solid rgba(148,163,184,0.6)",
+              background: "rgba(15,23,42,0.85)",
               color: "white",
             }}
           />
+
           <button
             type="submit"
             disabled={loading}
@@ -117,7 +122,9 @@ function App() {
         </form>
 
         <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
-          <span style={{ fontSize: "0.8rem", opacity: 0.8 }}>Sample links:</span>
+          <span style={{ fontSize: "0.8rem", opacity: 0.8 }}>
+            Sample links:
+          </span>
           {SAMPLE_URLS.map((sample) => (
             <button
               key={sample}
@@ -155,7 +162,14 @@ function App() {
       </header>
 
       {/* 3D word cloud area */}
-      <main style={{ flex: "1 1 auto", position: "relative" }}>
+      <main
+        style={{
+          flex: "1 1 auto",
+          position: "relative",
+          width: "100%",
+          height: "100%",
+        }}
+      >
         {loading && (
           <div
             style={{
@@ -199,8 +213,8 @@ function App() {
             }}
           >
             Enter a news article URL above and click{" "}
-            <strong style={{ marginLeft: "0.25rem" }}>Analyze</strong> to see the
-            3D word cloud.
+            <strong style={{ marginLeft: "0.25rem" }}>Analyze</strong> to see
+            the 3D word cloud.
           </div>
         )}
       </main>
